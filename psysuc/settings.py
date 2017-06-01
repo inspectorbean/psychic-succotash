@@ -25,7 +25,7 @@ SECRET_KEY = 'pflr7w0*s0gsma=zxeeu=#ii@l#7!v=4fy$(n4q)exr2+a*x1h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.11.14']
 
 
 # Application definition
@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'psysuc.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'psysuc',
+        'USER': 'psysuc',
+        'PASSWORD': 'Halo4239',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -118,3 +122,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
