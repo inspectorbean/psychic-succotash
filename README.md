@@ -1,4 +1,4 @@
-Personal Testbed
+This is designed to run on a home server and is a testbed for me to play with different applications and problems.
 
 TBusr - Playing with bus tracking and data collection and analytics
 
