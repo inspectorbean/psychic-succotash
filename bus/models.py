@@ -14,7 +14,7 @@ class Route(models.Model):
         return self.route_tag
 
 class Stop(models.Model):
-    stop_title = models.TextField()
+    stop_title = models.TextField(null=True, blank=True)
     stop_tag = models.CharField(max_length=5)
     def __str__(self):
         return self.stop_title

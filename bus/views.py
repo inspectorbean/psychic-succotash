@@ -47,6 +47,37 @@ def bus_update(request):
         soup = bs4.BeautifulSoup(xml, 'xml')
         preds = soup.find_all('predictions')
         for p in preds:
+            p_dict = dict(p.attrs)
+            if 'dirTitleBecauseNoPredictions' in p_dict:
+                direct = p_dict['dirTitleBecauseNoPredictions']
+                print('No buses to '+direct)
+                r, c = Route.objects.get_or_create(agency=p_dict['agencyTitle'], route_title=p_dict['routeTitle'], route_tag=p_dict['route_tag'])
+                s, c = Stop.objects.get(stop_tag=p_dict['stopTag'])
+                s.stop_title = p_dict['stopTitle']
+                b = Prediction(route=r, stop=s, direction=direct)
+                r.save()
+                s.save()
+                b.save()
+            else:
+                dr = p.direction
+                if dr != None:
+                    dr_dict = dr.attrs
+                    pred = dr.find_all('prediction')
+                    for pe in pred:
+                        pre_dict = dict(pe.attrs)
+                        print('Bus to '+dr_dict['title']+' in '+str(pre_dict['seconds'])+' seconds.')
+                            r, c = Route.objects.get_or_create(agency=p_dict['agencyTitle'], route_title=p_dict['routeTitle'], route_tag=p_dict['route_tag'])
+                            s, c = Stop.objects.get(stop_tag=p_dict['stopTag'])
+                            s.stop_title = p_dict['stopTitle']
+                            b = Prediction(route=r, stop=s, direction=dr_dict['title']
+                                        dir_tag=pre_dict['dir_tag'], arr_sec=int(pre_dict['seconds']),
+                                        vehic=pre_dict['vehicle'], trip=pre_dict['tripTag'], block=pre_dict['block'])
+                                        #add layover
+                                        #add departr
+                                        #add time
+                            r.save()
+                            s.save()
+                            b.save()
 
 
 

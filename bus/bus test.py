@@ -23,6 +23,17 @@ def bus_update():
         preds = soup.find_all('predictions')
         for p in preds:
             p_dict = dict(p.attrs)
-            print(p_dict)
+            if 'dirTitleBecauseNoPredictions' in p_dict:
+                direct = p_dict['dirTitleBecauseNoPredictions']
+                print('No buses to '+direct)
+            else:
+                dr = p.direction
+                if dr != None:
+                    dr_dict = dr.attrs
+                    pred = dr.find_all('prediction')
+                    for pe in pred:
+                        pre_dict = dict(pe.attrs)
+                        print('Bus to '+dr_dict['title']+' in '+str(pre_dict['seconds'])+' seconds.')
+
 
 bus_update()
