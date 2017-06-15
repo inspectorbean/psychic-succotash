@@ -3,7 +3,6 @@ from django.utils import timezone
 
 # Create your views here.
 
-import main, crawler
 import datetime, time, requests, re, os
 import bs4
 
