@@ -82,5 +82,5 @@ def bus_update(request):
 
 
 
-def bus(request)
+def bus(request):
     return render(request, 'bus/bus.html', context)
