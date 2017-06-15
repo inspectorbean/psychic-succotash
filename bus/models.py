@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class File(models.Models):
+class File(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     path = models.TextField()
 
