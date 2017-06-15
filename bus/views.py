@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.utils import timezone
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 
 # Create your views here.
 
@@ -78,11 +80,11 @@ def bus_update(request):
                         s.save()
                         b.save()
 
-
+    return HttpResponseRedirect(reverse('bus:bus'))
 
 
 def bus(request):
-    return render(request, 'bus/bus.html', context)
+    return render(request, 'bus/bus.html')
 
 def data(request):
-    return render(request, 'bus/bus.html', context)
+    return render(request, 'bus/bus.html')
