@@ -83,3 +83,6 @@ def bus_update(request):
 
 def bus(request):
     return render(request, 'bus/bus.html', context)
+
+def data(request):
+    return render(request, 'bus/bus.html', context)
