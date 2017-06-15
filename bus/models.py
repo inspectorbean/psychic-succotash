@@ -20,8 +20,8 @@ class Stop(models.Model):
         return self.stop_title
 
 class Prediction(models.Model):
-    route = models.ForiegnKey(Route)
-    stop = models.ForiegnKey(Stop)
+    route = models.ForeignKey(Route)
+    stop = models.ForeignKey(Stop)
     q_time = models.DateTimeField(auto_now_add=True)
     direction = models.TextField()
     dir_tag = models.CharField(max_length=20, null=True, blank=True)
