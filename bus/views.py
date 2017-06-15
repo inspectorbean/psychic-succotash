@@ -5,7 +5,8 @@ from django.core.urlresolvers import reverse
 
 # Create your views here.
 
-import datetime, time, requests, re, os
+import time, requests, re, os
+from datetime import datetime
 import bs4
 
 from .models import File, Route, Stop, Prediction
@@ -31,7 +32,7 @@ def grabber(stop):
     now = timezone.now()
     feed = requests.get('http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=mbta&stopId=' + stop)
     if feed.status_code == requests.codes.ok:
-        f_path = cwd+'/buslog/bus-'+str(stop)+strftime('%m-%d-%H:%M', now)+'.xml'
+        f_path = cwd+'/buslog/bus-'+str(stop)+datetime.strftime('%m-%d-%H:%M', now)+'.xml'
         xml = open(f_path, 'w')
         xml.write(feed.text)
         xml.close()
