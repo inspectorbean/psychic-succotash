@@ -2,5 +2,26 @@
 {% load bootstrap3  %}
 
 {% block content %}
-bus stuff will go here
+<table class"table">
+  <tr>
+   <th>Stop</th>
+   <th>Route</th>
+   <th>Direction</th>
+   <th>Arival Time</th>
+   <th>Arives in</th>
+  </tr>
+  {% for p in pred %}
+  <tr>
+    <th>{{p.stop.stop_title}}</th>
+    <th>{{p.route.route_title}}</th>
+    <th>{{p.direction}}</th>
+    <th>{{p.arr_time}}</th>
+    <th>{{p.arr_sec}}</th>
+  </tr>
+  {% else %}
+  <tr>
+    <td>Nothing!</td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock content %}
