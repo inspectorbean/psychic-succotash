@@ -72,7 +72,7 @@ def bus_update(request):
                         s = Stop.objects.get(stop_tag=p_dict['stopTag'])
                         s.stop_title = p_dict['stopTitle']
                         b = Prediction(route=r, stop=s, direction=dr_dict['title'],
-                                    dir_tag=pre_dict['dir_tag'], arr_sec=int(pre_dict['seconds']),
+                                    dir_tag=pre_dict['dirTag'], arr_sec=int(pre_dict['seconds']),
                                     vehic=pre_dict['vehicle'], trip=pre_dict['tripTag'], block=pre_dict['block'])
                                     #add layover
                                     #add departr
