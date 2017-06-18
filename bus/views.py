@@ -29,10 +29,11 @@ def mode():
 
 def grabber(stop):
     x = 0
-    now = timezone.now()
+    now = datetime.datetime.now(EST())
     feed = requests.get('http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=mbta&stopId=' + stop)
     if feed.status_code == requests.codes.ok:
-        f_path = cwd+'/buslog/bus-'+str(stop)+datetime.strftime('%m-%d-%H:%M', timezone.now())+'.xml'
+        date
+        f_path = cwd+'/buslog/bus-'+str(stop)+datetime.strftime('%m-%d-%H:%M', now)+'.xml'
         xml = open(f_path, 'w')
         xml.write(feed.text)
         xml.close()
