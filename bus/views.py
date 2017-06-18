@@ -87,7 +87,8 @@ def bus_update(request):
 def bus(request):
     p = Prediction.objects.all()
     for item in p:
-        item.arr_time = round(item.arr_sec / 60, 2)
+        if item.arr_sec != None:
+            item.arr_time = round(int(item.arr_sec) / 60, 2)
     context = {'pred': p}
     return render(request, 'bus/bus.html', context)
 
