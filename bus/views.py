@@ -16,7 +16,7 @@ routeReg = re.compile(r'routeTitle="(\d+)"')
 
 def mode():
     #toggles mode based on time and day
-    now = datetime.datetime.now(EST())
+    now = datetime.now(EST())
     wday = now.strftime('%w')
     h = now.strftime('%p')
     #print(wday)
@@ -29,7 +29,7 @@ def mode():
 
 def grabber(stop):
     x = 0
-    now = datetime.datetime.now(EST())
+    now = datetime.now(EST())
     feed = requests.get('http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=mbta&stopId=' + stop)
     if feed.status_code == requests.codes.ok:
         date
