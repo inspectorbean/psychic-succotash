@@ -54,7 +54,7 @@ def bus_update(request):
                 direct = p_dict['dirTitleBecauseNoPredictions']
                 print('No buses to '+direct)
                 r, c = Route.objects.get_or_create(agency=p_dict['agencyTitle'], route_title=p_dict['routeTitle'], route_tag=p_dict['routeTag'])
-                s, c = Stop.objects.get(stop_tag=p_dict['stopTag'])
+                s = Stop.objects.get(stop_tag=p_dict['stopTag'])
                 s.stop_title = p_dict['stopTitle']
                 b = Prediction(route=r, stop=s, direction=direct)
                 r.save()
@@ -69,7 +69,7 @@ def bus_update(request):
                         pre_dict = dict(pe.attrs)
                         print('Bus to '+dr_dict['title']+' in '+str(pre_dict['seconds'])+' seconds.')
                         r, c = Route.objects.get_or_create(agency=p_dict['agencyTitle'], route_title=p_dict['routeTitle'], route_tag=p_dict['routeTag'])
-                        s, c = Stop.objects.get(stop_tag=p_dict['stopTag'])
+                        s = Stop.objects.get(stop_tag=p_dict['stopTag'])
                         s.stop_title = p_dict['stopTitle']
                         b = Prediction(route=r, stop=s, direction=dr_dict['title'],
                                     dir_tag=pre_dict['dir_tag'], arr_sec=int(pre_dict['seconds']),
