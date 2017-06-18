@@ -32,7 +32,6 @@ def grabber(stop):
     now = timezone.now()
     feed = requests.get('http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=mbta&stopId=' + stop)
     if feed.status_code == requests.codes.ok:
-        date
         f_path = cwd+'/buslog/bus-'+str(stop)+datetime.strftime('%m-%d-%H:%M', now)+'.xml'
         xml = open(f_path, 'w')
         xml.write(feed.text)
