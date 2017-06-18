@@ -12,11 +12,16 @@
   </tr>
   {% for p in pred %}
   <tr>
-    <th>{{p.stop.stop_title}}</th>
-    <th>{{p.route.route_title}}</th>
-    <th>{{p.direction}}</th>
-    <th>{{p.arr_time}}</th>
-    <th>{{p.arr_sec}}</th>
+    <td>{{p.stop.stop_title}}</td>
+    <td>{{p.route.route_title}}</td>
+    <td>{{p.direction}}</td>
+    {% if p.arr_sec == None %}
+    <td>No Busses</td>
+    <td>No Busses</td>
+    {% else %}
+    <td>{{p.arr_time}}</td>
+    <td>{{ p.arr_sec / 60 }}</td>
+    {% endif %}
   </tr>
   {% empty %}
   <tr>
