@@ -6,6 +6,7 @@ from django.utils import timezone
 
 import datetime, time, requests, re, os
 import bs4
+from datetime import timedelta
 
 
 
@@ -36,4 +37,9 @@ def bus_update():
                         print('Bus to '+dr_dict['title']+' in '+str(pre_dict['seconds'])+' seconds.')
 
 
-bus_update()
+d = timedelta(seconds=59)
+print(d)
+t = datetime.datetime.now()
+print(t)
+x = t - d
+print(x)

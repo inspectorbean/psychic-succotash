@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 
 import time, requests, re, os
 from datetime import datetime
+from datetime import timedelta
 import bs4
 
 from .models import File, Route, Stop, Prediction
@@ -85,7 +86,10 @@ def bus_update(request):
 
 
 def bus(request):
-    p = Prediction.objects.all()
+    now = timezone.now()
+    d = timedelta(seconds=59)
+    t_fil = now - d
+    p = Prediction.objects.filter(q_time__gt=t_fil)
     for item in p:
         if item.arr_sec != None:
             item.arr_sec = round(int(item.arr_sec) / 60, 2)
