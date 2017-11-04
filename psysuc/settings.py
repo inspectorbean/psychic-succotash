@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import acc_keys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,7 @@ SECRET_KEY = 'pflr7w0*s0gsma=zxeeu=#ii@l#7!v=4fy$(n4q)exr2+a*x1h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.11.14']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,12 +80,8 @@ WSGI_APPLICATION = 'psysuc.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'psysuc',
-        'USER': 'psysuc',
-        'PASSWORD': 'postpass',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -131,3 +128,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 BOOTSTRAP3 = {
     'include_jquery' : True
     }
+
+if acc_keys.prod() == True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': acc_keys.post_db(),
+            'USER': acc_keys.post_user(),
+            'PASSWORD': acc_keys.post_pass(),
+            'HOST': 'localhost',
+            'PORT': '',
+
+    ALLOWED_HOSTS = ['192.168.11.14', 'devtest']
