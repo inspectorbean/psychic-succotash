@@ -1,0 +1,32 @@
+{% extends "home/topbar.html" %}
+
+{% block content %}
+<h1>Dinner Records</h1>
+<hr>
+<a class="btn btn-default" href="{% url 'eatout:add_dinner' %}">Add Dinner</a>
+<a class="btn btn-default" href="{% url 'eatout:add_rest' %}">Add Restaurant</a>
+<hr>
+<table class="table">
+  <tr>
+    <th>Date</th>
+    <th>Restaurant</th>
+    <th>Genre</th>
+    <th>Bill</th>
+  </tr>
+  {% for d in din %}
+  <tr>
+    <td>{{d.date}}</td>
+    <td><a href="{% url 'eatout:dinner_detail' d.id %}">{{d.restaurant.name}}</a></td>
+    <td>{{d.restaurant.genre}}</td>
+    <td>{{d.spent}}</td>
+  </tr>
+  {% empty %}
+  <tr>
+    <th>No Records</th>
+    <th> </th>
+    <th> </th>
+    <th> </th>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock content %}

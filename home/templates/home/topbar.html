@@ -41,7 +41,7 @@
               </ul>
             </li>
 
-            <li><a href="">Example Link</a></li>
+            <li><a href="{% url 'eatout:eatout_home' %}">Dinner</a></li>
             <li><a href="">Example Link</a></li>
             {% if request.user.is_superuser %}
             <li><a href="{% url 'admin:index' %}">Admin</a></li>

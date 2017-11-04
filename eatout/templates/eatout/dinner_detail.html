@@ -1,0 +1,14 @@
+{% extends "home/topbar.html" %}
+
+{% block content %}
+<h1>{{d.restaurant.name}}</h1>
+<h1><small>{{d.date}}</small></h1>
+<hr>
+<p>Spent: {{d.spent}}</p>
+<p>Attended: {{d.attendance}}</p>
+<hr>
+<p>Eric Mood: {{d.e_mood}}</p>
+<p>Tory Mood: {{d.t_mood}}</p>
+<hr>
+<p><i>Created on: {{d.date_created}}</i></p>
+{% endblock content %}
