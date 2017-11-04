@@ -137,6 +137,6 @@ if acc_keys.prod() == True:
             'USER': acc_keys.post_user(),
             'PASSWORD': acc_keys.post_pass(),
             'HOST': 'localhost',
-            'PORT': '',
+            'PORT': '',}}
 
     ALLOWED_HOSTS = ['192.168.11.14', 'devtest']
