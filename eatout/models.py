@@ -4,6 +4,9 @@ from django.db import models
 
 class Mood(models.Model):
     mood = models.CharField(max_length=3)
+    value = models.IntegerField()
+    def __str__(self):
+        return self.mood
 
 class Restaurant(models.Model):
     name = models.TextField()

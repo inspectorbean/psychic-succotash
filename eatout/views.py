@@ -4,8 +4,27 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
 # Create your views here.
-from .models import Dinner, Restaurant
+from .models import Dinner, Restaurant, Mood
 from .forms import DinnerForm, RestaurantForm
+
+try:
+    if len(Mood.objects.all()) != 6:
+        d = Mood.objects.all()
+        d.delete()
+        m = Mood(mood='N/A', value=0)
+        m.save()
+        m = Mood(mood=':(', value=1)
+        m.save()
+        m = Mood(mood=':/', value=2)
+        m.save()
+        m = Mood(mood=':|', value=3)
+        m.save()
+        m = Mood(mood=':)', value=4)
+        m.save()
+        m = Mood(mood=':D', value=5)
+        m.save()
+except:
+    pass
 
 def eatout_home(request):
     din = Dinner.objects.all()
@@ -22,7 +41,8 @@ def dinner_detail(request, d_id):
 def add_dinner(request):
     if request.method != 'POST':
         date = time.strftime("%Y-%m-%d")
-        form = DinnerForm(initial = {'date': date, 'attendance': 2, 'e_mood': 'N/A', 't_mood': 'N/A'})
+        e = Mood.objects.get(value=0)
+        form = DinnerForm(initial = {'date': date, 'attendance': 2, 'e_mood': e, 't_mood': e})
     else:
         form = DinnerForm(data=request.POST)
         if form.is_valid():
