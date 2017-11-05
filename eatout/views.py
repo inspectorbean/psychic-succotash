@@ -27,7 +27,7 @@ except:
     pass
 
 def eatout_home(request):
-    din = Dinner.objects.all()
+    din = Dinner.objects.order_by('-date')
     if len(din) > 20:
         din = din[:20]
     context = {'din': din}
