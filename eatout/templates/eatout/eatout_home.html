@@ -15,8 +15,8 @@
   </tr>
   {% for d in din %}
   <tr>
-    <td>{{d.date}}</td>
-    <td><a href="{% url 'eatout:dinner_detail' d.id %}">{{d.restaurant.name}}</a></td>
+    <td><a href="{% url 'eatout:dinner_detail' d.id %}">{{d.date}}</a></td>
+    <td><a href="{% url 'eatout:rest_detail' d.restaurant.id %}">{{d.restaurant.name}}</a></td>
     <td>{{d.restaurant.genre}}</td>
     <td>{{d.spent}}</td>
   </tr>

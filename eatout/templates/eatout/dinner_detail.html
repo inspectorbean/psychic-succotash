@@ -4,11 +4,13 @@
 <h1>{{d.restaurant.name}}</h1>
 <h1><small>{{d.date}}</small></h1>
 <hr>
+<a class="btn btn-default" href="{% url 'eatout:edit_dinner' d.id %}">Edit Dinner</a>
+<hr>
 <p>Spent: {{d.spent}}</p>
 <p>Attended: {{d.attendance}}</p>
 <hr>
-<p>Eric Mood: {{d.e_mood}}</p>
-<p>Tory Mood: {{d.t_mood}}</p>
+<p>Eric Mood: {{d.e_mood.mood}}</p>
+<p>Tory Mood: {{d.t_mood.mood}}</p>
 <hr>
 <p><i>Created on: {{d.date_created}}</i></p>
 {% endblock content %}

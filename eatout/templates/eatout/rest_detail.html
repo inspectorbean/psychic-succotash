@@ -1,0 +1,11 @@
+{% extends "home/topbar.html" %}
+
+{% block content %}
+<h1>{{r.name}}</h1>
+<hr>
+<a class="btn btn-default" href="{% url 'eatout:edit_rest' r.id %}">Edit Restaurant</a>
+<hr>
+<p>Type: {{r.genre}}</p>
+<p>Address: {{r.address}}</p>
+<p>{{r.lat}}, {{r.lon}}</p>
+{% endblock content %}
